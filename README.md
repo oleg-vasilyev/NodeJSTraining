@@ -1,2 +1,2 @@
-# node-course
-EPAM internal Node Course
+# nodejs-training
+EPAM internal NodeJS Course
