@@ -1,9 +1,21 @@
-import config from "./config";
-import { User, Product } from "./models";
+import { DirWatcher, Importer } from "./models";
 
 (() => {
-    console.log(config.name);
+  const importer = new Importer();
 
-    let user = new User();
-    let product = new Product();
+  const watcher = new DirWatcher();
+  const path = 'data';
+  const watchDelay = 100;
+  watcher
+    .watch(path, watchDelay)
+    .on('changed', () => {
+      importer.import(path)
+        .then(json => {
+          const data = JSON.stringify(json);
+          console.log(`Data from import: ${data}`);
+        });
+
+      const data = JSON.stringify(importer.importSync(path));
+      console.log(`Data from importSync: ${data}`);
+    });
 })();
