@@ -1,33 +1,35 @@
 import * as fs from 'fs';
-const csv = require("csvtojson");
+const csv = require('convert-csv-to-json');
 
 export class Importer {
   constructor() { }
 
   import(path) {
-    const promises = [];
+    const output = [];
     return new Promise((resolve) => {
       fs.readdir(path, (err, files) => {
         files.forEach(file => {
 
-          const convertedFilePromise = new Promise((resolve) => {
-            const filePath = `${path}\\${file}`;
+          const filePath = `${path}\\${file}`;
+          const json = csv.getJsonFromCsv(filePath);
 
-            csv()
-              .fromFile(filePath)
-              .on("end_parsed", function (json) {
-                return resolve(json);
-              });
-          });
-
-          promises.push(convertedFilePromise);
+          output.push(json);
         });
-        resolve(Promise.all(promises));
+        resolve(output);
       });
     });
   }
 
   importSync(path) {
+    const output = [];
+    const files = fs.readdirSync(path);
+    files.forEach(file => {
 
+      const filePath = `${path}\\${file}`;
+      const json = csv.getJsonFromCsv(filePath);
+
+      output.push(json);
+    });
+    return output;
   }
 }

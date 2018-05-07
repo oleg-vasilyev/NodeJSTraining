@@ -11,7 +11,11 @@ import { DirWatcher, Importer } from "./models";
     .on('changed', () => {
       importer.import(path)
         .then(json => {
-          console.log(`Data from Import: ${JSON.stringify(json)}`);
+          const data = JSON.stringify(json);
+          console.log(`Data from import: ${data}`);
         });
+
+      const data = JSON.stringify(importer.importSync(path));
+      console.log(`Data from importSync: ${data}`);
     });
 })();

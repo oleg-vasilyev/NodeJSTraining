@@ -16,6 +16,6 @@
     "nodemon": "^1.17.3"
   },
   "dependencies": {
-    "csvtojson": "^1.1.9"
+    "convert-csv-to-json": "0.0.13"
   }
 }
