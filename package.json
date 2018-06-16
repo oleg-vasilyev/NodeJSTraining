@@ -1,10 +1,9 @@
 {
   "name": "nodejs-training",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node -- ./app.js",
-    "test": ""
+    "start": "nodemon --exec babel-node -- ./index.js"
   },
   "author": "Oleg Vasilyev <this.olegvasilyev@gmail.com>",
   "license": "ISC",
@@ -15,14 +14,9 @@
     "babel-register": "^6.26.0",
     "nodemon": "^1.17.3",
     "babel-cli": "^6.26.0",
-    "colors": "^1.2.5",
-    "csvjson": "^5.0.0",
-    "csvtojson": "^1.1.9",
-    "minimist": "^1.2.0",
-    "npm": "^6.0.1",
-    "request": "^2.87.0",
-    "through2": "^0.6.5",
-    "winston": "^3.0.0-rc5"
+    "npm": "^6.0.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
